@@ -2,17 +2,19 @@
 # Librerías utilizadas #
 ########################
 
-# Para utilizar las librerías de R, es importante
+# Para utilizar las librerías de R, es importante instalar los siguientes programas (para ejecutar, quitar el signo "#")
 
-install.packages("Microsoft365R")
-install.packages("readxl")
-install.packages("dplyr")
+#install.packages("Microsoft365R")
+#install.packages("readxl")
+#install.packages("dplyr")
+#install.packages("ggplot2")
 
 # Sólo es necesario realizar el paso anterior 1 vez. En adelante, bastará con cargar las librerías así:
 
 library(Microsoft365R)
 library(readxl)
 library(dplyr)
+library(ggplot2)
 
 ######################################## 
 # Descargar la información actualizada # 
@@ -82,10 +84,54 @@ str(df2$RUC) # Ahora el RUC de df2 es un dato tipo "num"
 
 # Uso de group by
 
-df <- df %>% rename(plazo = 'Plazo para la tramitación (meses)') # Importante cambiar el nombre de la columna, caso contrario puede presentar errores
-df %>% 
-  group_by(Revisor) %>% 
+df <- df %>% rename(plazo = 'Plazo para la tramitación (meses)') # Es importante cambiar el nombre de la columna (caso contrario puede presentar errores)
+                                                                 # Es útil poner nombres sencillos en las columnas, evitar espacios y caracteres especiales
+
+df_r <- df %>% 
+  group_by(Revisor) %>% # Define la variable que será utilizada para agrupar los datos
   summarise(media_plazo = mean(plazo, na.rm = TRUE)) # Proporciona la media por agrupamiento
+
+#################
+# Gráficos en R # 
+################# Esta sección se inspira de la web: https://r-graph-gallery.com/
+
+# Gráfico de barras simple
+
+ggplot(df_r, aes(x=Revisor, y=media_plazo)) + 
+  geom_bar(stat = "identity")
+
+# Gráfico de barras horizontales
+
+ggplot(df_r, aes(x=Revisor, y=media_plazo)) + 
+  geom_bar(stat = "identity") +
+  coord_flip()
+
+# Gráfico de pie
+
+ggplot(df_r, aes(x="", y=media_plazo, fill=Revisor)) +
+  geom_bar(stat="identity", width=1, color="white") +
+  coord_polar("y", start=0) +
+  theme_void()
+
+# Chupetines horizontales
+
+ggplot(df_r, aes(x=Revisor, y=media_plazo)) +
+  geom_segment( aes(x=Revisor, xend=Revisor, y=0, yend=media_plazo), color="skyblue") +
+  geom_point( color="blue", size=4, alpha=0.6) +
+  theme_light() +
+  coord_flip() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.border = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+
+
+gbarras(df_r)
+
+
+
 
 
 

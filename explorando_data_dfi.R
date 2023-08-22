@@ -128,8 +128,6 @@ ggplot(df_r, aes(x=Revisor, y=media_plazo)) +
 
 
 
-gbarras(df_r)
-
 
 
 

@@ -11,7 +11,7 @@
 
 # Sólo es necesario realizar el paso anterior 1 vez. En adelante, bastará con cargar las librerías así:
 
-library(Microsoft365R)
+library(Microsoft365R) # La documentación puede encontrarse aquí: https://github.com/Azure/Microsoft365R 
 library(readxl)
 library(dplyr)
 library(ggplot2)
@@ -19,6 +19,8 @@ library(ggplot2)
 ######################################## 
 # Descargar la información actualizada # 
 ######################################## 
+
+list_sharepoint_sites()
 
 site <- get_sharepoint_site("Grupo Teletrabajo GSF") # Accede al Sharepoint (la primera vez pedirá usuario y clave, hay que tramitar permiso de administrador con OTI)
 drv <- site$get_drive('Documentos') # Dentro del Sharepoint, accede a la carpeta "Documentos"

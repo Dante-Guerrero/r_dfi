@@ -5,7 +5,15 @@ library(Microsoft365R)
 outlb <- get_business_outlook()
 
 library(blastula)
+
 bl_body <- "Hello"
+
+Arriba <- add_image(
+  file = "proto1-semaforizacion.png",
+  width = 1048,
+  align = c("right"))
+
+Cabecera <- md(Arriba)
 
 
 Logo_Oefa <- add_image(
@@ -49,6 +57,7 @@ Pie_de_pagina <- blocks(
 )
 
 bl_em <- compose_email(
+  header= Cabecera,
   body = md(bl_body),
   footer = Pie_de_pagina
 )

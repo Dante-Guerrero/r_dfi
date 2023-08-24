@@ -20,27 +20,27 @@ Pie_de_pagina <- blocks(
   block_social_links(
     social_link(
       service = "Twitter",
-      link = "https://twitter.com/OEFAperu",
+      link = "https://twitter.com/IndecopiOficial",
       variant = "dark_gray"
     ),
     social_link(
       service = "Facebook",
-      link = "https://www.facebook.com/oefa.peru",
+      link = "https://www.facebook.com/IndecopiOficial",
       variant = "dark_gray"
     ),
     social_link(
       service = "Instagram",
-      link = "https://www.instagram.com/somosoefa/",
+      link = "https://www.instagram.com/indecopioficial/",
       variant = "dark_gray"
     ),
     social_link(
       service = "LinkedIn",
-      link = "https://www.linkedin.com/company/oefa/",
+      link = "https://www.linkedin.com/company/indecopi/",
       variant = "dark_gray"
     ),
     social_link(
       service = "YouTube",
-      link = "https://www.youtube.com/user/OEFAperu",
+      link = "https://www.youtube.com/@IndecopiOficial",
       variant = "dark_gray"
     )
   ),

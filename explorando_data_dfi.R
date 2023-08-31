@@ -129,8 +129,8 @@ ggplot(df_r, aes(x=Revisor, y=media_plazo)) +
   )
 
 
-
-
+install.packages('tinytex')
+tinytex::install_tinytex()
 
 
 

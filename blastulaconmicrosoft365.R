@@ -6,12 +6,17 @@ outlb <- get_business_outlook()
 
 library(blastula)
 
-bl_body <- "Hello"
+boton_tablero <- add_cta_button(
+  url = "https://datastudio.google.com/u/2/reporting/c4f5072f-9976-473e-99d9-9f2ba13296bd/page/5u4sC",
+  text = "Tablero de control"
+)
+
+bl_body <- c("Hello", md(c(boton_tablero)),"Bye")
 
 Arriba <- add_image(
   file = "proto1-semaforizacion.png",
-  width = 1048,
-  align = c("right"))
+  width = 1000,
+  align = c("left"))
 
 Cabecera <- md(Arriba)
 
@@ -65,3 +70,5 @@ em <-  outlb$create_email(bl_em, subject="Hello from R",
                           to="dguerrero@indecopi.gob.pe")
 
 em$send()
+
+
